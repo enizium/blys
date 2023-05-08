@@ -9,5 +9,4 @@ describe('system ', () => {
         loginObj.Logins()
     })
 
-
 });

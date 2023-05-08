@@ -10,6 +10,8 @@ function getCurrentUrl() {
 
 export function FrontEndLogin() {
     cy.visit(getCurrentUrl());
+    // cy.clearCookies()
+    // cy.getCookies().should('be.empty')
 }
 
 export function Logins() {

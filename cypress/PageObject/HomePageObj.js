@@ -4,6 +4,6 @@ const homePage = new HomePage();
 
 var userdata = Cypress.env("userdata");
 
-export function GoToBookimg() {
+export function GoToBooking() {
     homePage.clickBooking()
 }
