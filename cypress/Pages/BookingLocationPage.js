@@ -4,55 +4,55 @@ export class BookingLocationPage {
     }
 
     deleteAddress(){
-        cy.get('.jss288 > .MuiTypography-root')
+        cy.xpath('(//a[contains(text(),"Delete")])[1]').click()  
     }
 
     clickAddLocation(){
-        cy.xpath('//a[contains(text(),"Add new location")]').click()
+        return cy.xpath('//a[contains(text(),"Add new location")]')
     }
 
-    enterAddress(){
-        cy.xpath('//input[@placeholder="House/unit number & street"]').text("abc")
+    enterAddress(address){
+        cy.xpath('//input[@placeholder="Street address"]').type(address)
     }
 
-    clickedSelectedAddress(){
-        cy.xpath('//div[contains(text(),"9301 Irvine Center Dr, Irvine, CA 92618, USA")]')
+    clickedSelectedAddress(address){
+        cy.xpath(`//div[contains(text(),'${address}')]`).click()
     }
 
     locationTypeDropdown(){
-        cy.xpath('(//p[@class="MuiTypography-root MuiTypography-body1"])[1]')
+        cy.xpath('(//p[@class="MuiTypography-root MuiTypography-body1"])[1]').click()
     }
-    locationType(){
-        cy.xpath('//div[contains(text(),"Home")]')
+    
+    locationType(location){
+        cy.xpath(`//div[contains(text(),'${location}')]`).click()
     }
 
     parkingTypeDropdown(){
-        cy.get('.jss123 > .MuiButtonBase-root > .MuiBox-root > .MuiTypography-root')
+        cy.xpath('(//p[@class="MuiTypography-root MuiTypography-body1"])[2]').click()
     }
     
-    parkingType(){
-        cy.xpath('//div[contains(text(),"Visitor parking(free)")]')
-         //cy.get('.jss172 > .MuiBox-root')
+    parkingType(parking){
+        cy.xpath(`//div[contains(text(),"${parking}")]`).click()
     }
 
     stairTypeDropdown(){
-        cy.get('.jss130 > .MuiButtonBase-root > .MuiBox-root > .MuiTypography-root')       
+        cy.xpath('(//p[@class="MuiTypography-root MuiTypography-body1"])[3]').click()     
     }
 
-    stairType(){
-        cy.xpath('//div[contains(text(),"Half flight")]')
+    stairType(stair){
+        cy.xpath(`//div[contains(text(),"${stair}")]`).click()
     }
 
     petTypeDropdown(){
-        cy.get('.jss137 > .MuiButtonBase-root > .MuiBox-root > .MuiTypography-root')
+        cy.xpath('(//p[@class="MuiTypography-root MuiTypography-body1"])[4]').click()
     }
 
-    petType(){
-        cy.xpath('//div[contains(text(),"No pets")]')
+    petType(pet){
+        cy.xpath(`//div[contains(text(),"${pet}")]`).click()
     }
 
     continueBtn(){
-        cy.xpath('//div[contains(text(),"Continue)]')
+        cy.xpath('//div[contains(text(),"Continue")]').click()
     }
 
 
@@ -60,4 +60,4 @@ export class BookingLocationPage {
 
 
 
-}
+}c

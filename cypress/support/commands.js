@@ -30,7 +30,6 @@ Cypress.Commands.add('login', (username, password) => {
         cy.get('.jss9 > .MuiInputBase-root > .MuiInputBase-input').type(username)
         cy.get('.jss14 > .MuiInputBase-root > .MuiInputBase-input').type(password)
         cy.get('.jss17 > .MuiButtonBase-root').click()
-        //cy.get('.jss32 > .MuiButtonBase-root > .MuiBox-root').click()
         cy.url().should('contain', '/booking')
     })
   })
