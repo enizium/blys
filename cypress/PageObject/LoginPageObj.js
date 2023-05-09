@@ -14,7 +14,14 @@ export function FrontEndLogin() {
     // cy.getCookies().should('be.empty')
 }
 
+// export function Logins() {
+//     loginpage.UserLogin(userdata);
+// }
+
 export function Logins() {
-    loginpage.UserLogin(userdata);
+    loginpage.enterUserName(userdata)
+    loginpage.enterPassword(userdata)
+    loginpage.clickLoginBtn()
 }
+
 

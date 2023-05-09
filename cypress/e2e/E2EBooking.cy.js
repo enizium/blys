@@ -1,26 +1,22 @@
 import * as loginObj from "../PageObject/LoginPageObj"
 import * as homePageObj from "../PageObject/HomePageObj"
 import * as locationPageObj from "../PageObject/LocationPageObj"
+import testdata from '../fixtures/testdata.json';
 
 describe(' E2E Booking Test', () => {
-    before(() => {
-        loginObj.FrontEndLogin()
-        cy.session("Login session", ()=>{
-            loginObj.FrontEndLogin()
-            loginObj.Logins()
-        })
-        loginObj.FrontEndLogin()
+    beforeEach(() => {
+        var userdata = Cypress.env("userdata");
+        cy.login(userdata.email, userdata.password)
+        cy.visit('/bookings')
     });
 
-    it(" User login ", () => {
-       // loginObj.Logins()
-    })
-
     it("Go to New Booking", () =>{
-        homePageObj.GoToBooking()
+        homePageObj.goToBooking()
     })
 
     it("Add User Address", ()=>{
+        cy.visit('/new-booking/saved-locations')
+        console.log(testdata)
         locationPageObj.deleteExisitingAddress()
     })
 
