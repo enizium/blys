@@ -1,7 +1,8 @@
-import * as loginObj from "../PageObject/LoginPageObj"
 import * as homePageObj from "../PageObject/HomePageObj"
 import * as locationPageObj from "../PageObject/LocationPageObj"
-import testdata from '../fixtures/testdata.json';
+import * as bookingDetailPageObj from "../PageObject/BookingDetailObj"
+import * as preferredDateTimePageObj from "../PageObject/PreferredDateTimePageObj"
+import * as reviewAndBookPageObj from "../PageObject/ReviewAndBookPageObj"
 
 describe(' E2E Booking Test', () => {
     beforeEach(() => {
@@ -10,11 +11,13 @@ describe(' E2E Booking Test', () => {
         cy.visit('/bookings')
     });
 
-    it("Go to New Booking", () =>{
+    it("Book new Appointment", () =>{
         homePageObj.goToBooking()
-        //locationPageObj.deleteExisitingAddress()
-        locationPageObj.addAddress()
-        
+        locationPageObj.AddAddressFromReviewAndBookPage()
+        bookingDetailPageObj.AddNewBookingDetail()
+        preferredDateTimePageObj.SelectPreferredDateTime()
+        reviewAndBookPageObj.validateBookingSummary()
+        reviewAndBookPageObj.RequestToBook();
     })
 
 });

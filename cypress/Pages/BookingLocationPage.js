@@ -16,11 +16,12 @@ export class BookingLocationPage {
     }
 
     clickedSelectedAddress(address){
-        cy.xpath(`//div[contains(text(),'${address}')]`).click()
+        cy.xpath(`//div[contains(text(),'${address}')]`).click({force: true})
     }
 
     locationTypeDropdown(){
-        cy.xpath('(//p[@class="MuiTypography-root MuiTypography-body1"])[1]').click()
+        cy.wait(1000)
+        cy.xpath('(//p[@class="MuiTypography-root MuiTypography-body1"])[1]').click({force: true})
     }
     
     locationType(location){
@@ -55,9 +56,12 @@ export class BookingLocationPage {
         cy.xpath('//div[contains(text(),"Continue")]').click()
     }
 
+    SaveBtn(){
+        cy.xpath('//div[contains(text(),"Save")]').click()
+    }
 
 
 
 
 
-}c
+}

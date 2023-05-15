@@ -25,3 +25,5 @@ require('cypress-xpath')
 //     // failing the test
 //     return false
 // })
+
+import 'cypress-mochawesome-reporter/register';

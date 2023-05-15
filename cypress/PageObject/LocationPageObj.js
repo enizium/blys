@@ -1,9 +1,13 @@
 import {BookingLocationPage} from "../Pages/BookingLocationPage"
+import {HomePage} from "../Pages/HomePage"
 import testdata from '../fixtures/testdata.json';
+import * as reviewAndBookPageObj from "../PageObject/ReviewAndBookPageObj"
+
+const homePage = new HomePage();
 
 const bookingLocationPage = new BookingLocationPage();
 
-export function deleteAddress() {
+function deleteAddress() {
     bookingLocationPage.deleteAddress()
 }
 
@@ -17,22 +21,38 @@ export function deleteExisitingAddress(){
             cy.reload()
         }
     })
+    cy.xpath('//div[contains(text(),"Booking location")]/../../../div[3]').children().should('have.length', 0)
 }
 
-export function addAddress(){
+function addAddress(){
     bookingLocationPage.enterAddress(testdata.Addresses['Address'])
     bookingLocationPage.clickedSelectedAddress(testdata.Addresses['Address'])
-    bookingLocationPage.locationTypeDropdown()
-    bookingLocationPage.locationType(testdata.Addresses['LocationType'])
     bookingLocationPage.parkingTypeDropdown()
     bookingLocationPage.parkingType(testdata.Addresses['Parking'])
+    bookingLocationPage.locationTypeDropdown()
+    bookingLocationPage.locationType(testdata.Addresses['LocationType'])
     bookingLocationPage.stairTypeDropdown()
     bookingLocationPage.stairType(testdata.Addresses['Stair'])
     bookingLocationPage.petTypeDropdown()
     bookingLocationPage.petType(testdata.Addresses['Pet'])
+    bookingLocationPage.SaveBtn() 
+}
 
+export function ClickContinueBtn(){
     bookingLocationPage.continueBtn()
-   
+}
+
+function clickAddNewLocation(){
+    bookingLocationPage.clickAddLocation().should('have.text', 'Add new location').click()
+} 
+
+export function AddAddressFromReviewAndBookPage(){
+    reviewAndBookPageObj.AddChangeAddress()
+    homePage.validatePageTitle("Booking location").should('be.visible')
+    deleteExisitingAddress()
+    clickAddNewLocation()
+    addAddress()
+    ClickContinueBtn() 
 }
 
 
